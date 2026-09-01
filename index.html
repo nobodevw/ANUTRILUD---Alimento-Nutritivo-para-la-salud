@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANUTRILUD - Alimento Nutritivo para la Salud</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* VARIABLES DE TEMA CLARO (Predeterminado) */
+    :root {
+      --primary: #2d4223;        /* Verde botánico principal */
+      --brown-dark: #4a3328;     /* Marrón tierra oscuro */
+      --brown-medium: #6d4c3d;   /* Marrón cálido neutro */
+      --brown-light: #ece6e0;    /* Marrón beige suave */
+      --accent: #b08b3a;         /* Dorado elegante */
+      --bg-cream: #f6f3ee;       /* Fondo general mate */
+      --bg-card: #ffffff;        /* Fondo tarjetas */
+      --header-bg: rgba(246, 243, 238, 0.95);
+      --text-main: #2c2523;      /* Texto principal */
+      --text-muted: #665b55;     /* Texto secundario */
+      --border: #ddd5cb;         /* Bordes tono tierra */
+    }
+
+    /* VARIABLES DE TEMA OSCURO */
+    [data-theme="dark"] {
+      --primary: #5c824c;        /* Verde botánico suavizado */
+      --brown-dark: #f0e6df;     /* Títulos claros en oscuro */
+      --brown-medium: #d4c5b9;   /* Marrón medio aclarado */
+      --brown-light: #2a201b;    /* Fondo destacado oscuro */
+      --accent: #d4a94e;         /* Dorado brillante para resaltado */
+      --bg-cream: #14100e;       /* Fondo profundo café/negro mate */
+      --bg-card: #1e1613;        /* Tarjetas café oscuro */
+      --header-bg: rgba(20, 16, 14, 0.95);
+      --text-main: #e8e2dc;      /* Texto principal claro */
+      --text-muted: #b0a49b;     /* Texto secundario suave */
+      --border: #3b2e28;         /* Bordes oscuros */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header y Navegación */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--header-bg);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-size: 0.65rem;
+      color: var(--brown-medium);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    nav a:hover, nav a.active { 
+      color: var(--primary);
+    }
+
+    /* Botón de Modo Oscuro */
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Hero Section Horizontal */
+    .hero {
+      padding: 3rem 5% 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-logo-badge {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-bottom: 1rem;
+    }
+
+    .hero-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-slogan {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--brown-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Layout Dinámico: Cuadrícula Bento */
+    .section-title-center {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .bento-card.featured {
+      background: var(--brown-light);
+      border-color: var(--brown-medium);
+    }
+
+    .bento-card i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+
+    .bento-card h3 {
+      color: var(--brown-dark);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .bento-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .bento-list {
+      list-style: none;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bento-list li {
+      font-size: 0.82rem;
+      color: var(--brown-dark);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .bento-list li i {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
+    /* Pestañas de Productos Dinámicas */
+    .products-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .product-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 12px 24px;
+      border-radius: 30px;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .product-content {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .product-content.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .product-img-box {
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid var(--accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ESTILOS DE LA SECCIÓN ANEXOS / GALERÍA DINÁMICA SUAVE */
+    .annex-container {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      position: relative;
+      /* Animación suave de entrada */
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    /* Delays sutiles en cascada */
+    .gallery-card:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-card:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      border-color: var(--accent);
+    }
+
+    .gallery-img-box {
+      width: 100%;
+      height: 290px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover .gallery-img-box img {
+      transform: scale(1.06);
+    }
+
+    /* Superposición de ícono al pasar el mouse */
+    .gallery-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-overlay i {
+      color: #ffffff;
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 12px;
+      border-radius: 50%;
+      transform: scale(0.8);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-card:hover .gallery-overlay i {
+      transform: scale(1);
+    }
+
+    .gallery-info {
+      padding: 1.1rem 1.2rem;
+      text-align: center;
+      background: var(--bg-card);
+    }
+
+    .gallery-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .gallery-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin: 0;
+    }
+
+    /* VISOR LIGHTBOX ANIMADO Y DIGERIBLE */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.92);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid var(--accent);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: #ffffff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      color: var(--accent);
+      transform: scale(1.15);
+    }
+
+    /* Componentes Dinámicos Interactivos */
+    .interactive-box {
+      background: var(--bg-cream);
+      border: 1px solid var(--border);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    .calculator-slider {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .live-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .feed-item {
+      background: var(--bg-card);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* Dos columnas para Contacto y Testimonios */
+    .contact-section {
+      background: var(--brown-light);
+      border-top: 1px solid var(--border);
+      padding: 4rem 5%;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    input:focus, textarea:focus { border-color: var(--accent); }
+    textarea { height: 90px; resize: none; }
+
+    button.btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      align-self: flex-start;
+    }
+
+    button.btn:hover { opacity: 0.9; }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: none;
+      z-index: 1000;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      background: var(--bg-cream);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero, .bento-grid, .product-content.active, .two-columns {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .product-tabs { flex-wrap: wrap; }
+      header { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMBOLO LOGO SVG RECREADO -->
+  <svg style="display: none;">
+    <symbol id="anutrilud-logo" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="240" fill="#fcf8f2"/>
+      <path d="M 185 205 A 75 75 0 0 1 315 205" fill="none" stroke="#2d4223" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="177" cy="205" r="3.5" fill="#b08b3a"/>
+      <circle cx="323" cy="205" r="3.5" fill="#b08b3a"/>
+      <path d="M 250 178 C 248 171 239 167 243 160 C 247 154 250 159 250 162 C 250 159 253 154 257 160 C 261 167 252 171 250 178 Z" fill="#b08b3a"/>
+      <path d="M 250 220 C 242 195 240 170 250 165 C 260 170 258 195 250 220 Z" fill="#2d4223"/>
+      <path d="M 247 218 C 225 210 205 190 218 180 C 235 180 245 200 247 218 Z" fill="#2d4223"/>
+      <path d="M 253 218 C 275 205 290 185 273 182 C 255 185 250 205 253 218 Z" fill="#2d4223"/>
+      <path d="M 244 212 C 230 207 215 198 222 193 C 235 193 242 205 244 212 Z" fill="#2d4223"/>
+      <text x="250" y="286" font-family="'Cormorant Garamond', serif" font-size="58" font-weight="700" fill="#2d4223" text-anchor="middle" letter-spacing="3">ANUTRILUD</text>
+      <path d="M 276 288 Q 288 300 320 298" fill="none" stroke="#2d4223" stroke-width="4" stroke-linecap="round"/>
+      <line x1="155" y1="322" x2="235" y2="322" stroke="#2d4223" stroke-width="1.2"/>
+      <path d="M 250 326 C 248 322 244 320 246 316 C 248 313 250 315 250 317 C 250 315 252 313 254 316 C 256 320 252 322 250 326 Z" fill="#b08b3a"/>
+      <line x1="265" y1="322" x2="345" y2="322" stroke="#2d4223" stroke-width="1.2"/>
+      <text x="250" y="348" font-family="'Montserrat', sans-serif" font-size="11.5" font-weight="600" fill="#3a3a3a" text-anchor="middle" letter-spacing="2.2">RICO POR DENTRO, PODEROSO POR FUERA</text>
+      <path d="M 195 365 Q 250 380 305 365" fill="none" stroke="#b08b3a" stroke-width="1.2"/>
+      <circle cx="250" cy="385" r="2.5" fill="#b08b3a"/>
+    </symbol>
+  </svg>
+
+  <header>
+    <div class="logo-container">
+      <svg class="header-logo-img"><use href="#anutrilud-logo"/></svg>
+      <div>
+        <div class="logo">ANUTRILUD</div>
+        <span class="tagline">Alimento nutritivo para la salud</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#puntos-clave">Puntos Clave</a>
+      <a href="#productos">Línea de Productos</a>
+      <a href="#contacto">Contacto</a>
+      <button class="theme-toggle-btn" id="theme-toggle">
+        <i class="fa-solid fa-moon"></i> <span id="theme-text">Oscuro</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO DINÁMICO HORIZONTAL -->
+  <section class="hero">
+    <div class="hero-left">
+      <svg class="hero-logo-badge"><use href="#anutrilud-logo"/></svg>
+      <div class="hero-brand">ANUTRILUD</div>
+      <span class="hero-slogan">Alimento Nutritivo para la Salud</span>
+      <h1>Línea Especializada de Recuperación contra el Dengue en Piura</h1>
+    </div>
+    <div class="hero-right">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video ANUTRILUD" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOSAICO BENTO AMPLIADO -->
+  <section id="puntos-clave" style="padding: 2rem 0 4rem;">
+    <div class="section-title-center">
+      <span class="section-tag">Fundamentos e Impacto</span>
+      <h2 class="section-title">Contexto & Propuesta de Valor</h2>
+    </div>
+
+    <div class="bento-grid">
+      <!-- PROBLEMÁTICA -->
+      <div class="bento-card">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>Problemática Sanitaria</h3>
+        <p>En la región Piura, las altas temperaturas combinadas con brotes de dengue provocan cuadros febriles severos, deshidratación rápida y alteración del gusto. Esto genera una inapetencia crítica y dificultades de deglución que ralentizan la recuperación de los pacientes.</p>
+        <ul class="bento-list">
+          <li><i class="fa-solid fa-circle-small"></i> Pérdida drástica de apetito e irritación estomacal.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Rápido descenso de defensas y nutrientes clave.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Escasez de alternativas blandas de rápido consumo.</li>
+        </ul>
+      </div>
+
+      <!-- SOLUCIÓN -->
+      <div class="bento-card featured">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>Solución ANUTRILUD</h3>
+        <p>Desarrollamos una tríada alimenticia (Galleta, Puré y Té) específicamente formulada para etapas de convalecencia. Proporcionamos una dieta blanda, de fácil digestión, suave al paladar y cargada de electrolitos, micronutrientes y antioxidantes naturales.</p>
+        <ul class="bento-list">
+          <li><i class="fa-solid fa-circle-small"></i> Aporte calórico denso sin sobrecargar el estómago.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Rehidratación efectiva y restitución mineral.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Formatos listos para consumir con agradable textura.</li>
+        </ul>
+      </div>
+
+      <!-- VISIÓN -->
+      <div class="bento-card">
+        <i class="fa-solid fa-compass"></i>
+        <h3>Visión Estratégica</h3>
+        <p>Aspiramos a consolidarnos como el referente en nutrición funcional asistencial del norte peruano, colaborando con centros de salud locales para mitigar el impacto de las enfermedades virales de temporada mediante innovación alimentaria accesible.</p>
+        <ul class="bento-list">
+          <li><i class="fa-solid fa-circle-small"></i> Reducción de recaídas por malnutrición aguda.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Alianzas de distribución preventiva en Piura.</li>
+          <li><i class="fa-solid fa-circle-small"></i> Impacto directo en el bienestar de familias vulnerables.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DINÁMICOS EN PESTAÑAS -->
+  <section id="productos" class="products-container">
+    <div class="section-title-center">
+      <span class="section-tag">Gama Nutritiva</span>
+      <h2 class="section-title">Explora Nuestros Alimentos</h2>
+    </div>
+
+    <div class="product-tabs">
+      <button class="tab-btn active" onclick="switchTab('tab-galleta', this)"><i class="fa-solid fa-cookie-bite"></i> Galleta Nutritiva</button>
+      <button class="tab-btn" onclick="switchTab('tab-pure', this)"><i class="fa-solid fa-bowl-food"></i> Puré Reconfortante</button>
+      <button class="tab-btn" onclick="switchTab('tab-te', this)"><i class="fa-solid fa-mug-hot"></i> Té Beneficioso</button>
+    </div>
+
+    <!-- TAB 1: GALLETA -->
+    <div id="tab-galleta" class="product-content active">
+      <div>
+        <span class="section-tag">Aporte Calórico Directo</span>
+        <h3 style="font-size:1.8rem; color:var(--brown-dark); margin-bottom:0.8rem;">Galleta Nutritiva</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+          Diseñada para aportar energía de fácil digestión cuando la inapetencia severa dificulta comer alimentos sólidos pesados.
+        </p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem;">
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Enriquecida con Zinc y Hierro esencial.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Libre de grasas irritantes o pesadas.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Textura suave de rápida asimilación.</li>
+        </ul>
+        <br>
+        <button class="btn" onclick="location.href='#contacto'">Pedir Galleta</button>
+      </div>
+      <div>
+        <div class="product-img-box"><img src="a.jfif" alt="Galleta ANUTRILUD"></div>
+        <div class="interactive-box">
+          <strong style="font-size:0.8rem; color:var(--brown-dark);">Propiedades en Directo:</strong>
+          <div class="live-feed" id="live-feed-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PURÉ -->
+    <div id="tab-pure" class="product-content">
+      <div>
+        <span class="section-tag">Hidratación y Micronutrientes</span>
+        <h3 style="font-size:1.8rem; color:var(--brown-dark); margin-bottom:0.8rem;">Puré Reconfortante</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+          Repone agua, electrolitos y macronutrientes sin recargar la mucosa gástrica sensible.
+        </p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem;">
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Deglución sumamente pasiva.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Balance electrolítico anti-deshidratación.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Fortalecido con Complejo B y Vitamina C.</li>
+        </ul>
+        <br>
+        <button class="btn" onclick="location.href='#contacto'">Pedir Puré</button>
+      </div>
+      <div>
+        <div class="product-img-box"><img src="c.jfif" alt="Puré ANUTRILUD"></div>
+        <div class="interactive-box">
+          <label style="font-size:0.8rem; font-weight:700; color:var(--brown-dark);">Calculadora de Hidratación (Porciones/día): <b id="hours-val">3</b></label>
+          <input type="range" min="1" max="6" value="3" class="calculator-slider" id="calc-slider">
+          <p style="font-size:0.85rem; margin-top:5px; color:var(--brown-medium); font-weight:600;">Aporte Hídrico Equivalente: <span id="calc-result" style="color:var(--accent);">600</span> ml</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: TÉ -->
+    <div id="tab-te" class="product-content">
+      <div>
+        <span class="section-tag">Alivio y Descanso</span>
+        <h3 style="font-size:1.8rem; color:var(--brown-dark); margin-bottom:0.8rem;">Té Beneficioso</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+          Ayuda a mitigar dolores musculares y brinda una tibia sensación de calma general al paciente.
+        </p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem;">
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Sin estimulantes ni teína.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Propiedades reconfortantes del estómago.</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Promueve el descanso reparador.</li>
+        </ul>
+        <br>
+        <button class="btn" onclick="location.href='#contacto'">Pedir Té</button>
+      </div>
+      <div>
+        <div class="product-img-box"><img src="b.jfif" alt="Té ANUTRILUD"></div>
+        <div class="interactive-box" style="text-align:center;">
+          <button class="btn" id="simulate-metrics-btn" style="padding:6px 14px; font-size:0.78rem;">Simular Confort</button>
+          <p id="metric-display" style="font-size:0.9rem; font-weight:700; color:var(--brown-dark); margin-top:8px;">Nivel de Alivio: 92%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSECCIÓN ANEXOS: GALERÍA DINÁMICA INTERACTIVA SIN DESCRIPCIONES -->
+    <div class="annex-container">
+      <div class="section-title-center">
+        <span class="section-tag">Anexos Fotográficos</span>
+        <h3 style="font-size: 1.6rem; color: var(--brown-dark); font-weight: 700;">Galería del Proceso y Producto Real</h3>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="openLightbox('añexo.jfif', 'Proceso de Elaboración')">
+          <div class="gallery-img-box">
+            <img src="añexo.jfif" alt="Proceso de Elaboración de Galletas">
+            <div class="gallery-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Anexo 01</span>
+            <h4 class="gallery-title">Proceso de Elaboración</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('añexo2.jfif', 'Presentación Individual')">
+          <div class="gallery-img-box">
+            <img src="añexo2.jfif" alt="Presentación de Producto Galleta y Puré">
+            <div class="gallery-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Anexo 02</span>
+            <h4 class="gallery-title">Presentación Individual</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('añexo3.jfif', 'Lote Listo para Distribución')">
+          <div class="gallery-img-box">
+            <img src="añexo3.jfif" alt="Lote de Alimentos Preparados">
+            <div class="gallery-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Anexo 03</span>
+            <h4 class="gallery-title">Lote Listo para Distribución</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISOR AMBLIADO (LIGHTBOX) PARA IMÁGENES -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)"><i class="fa-solid fa-xmark"></i></button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Vista ampliada">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN CONTACTO Y TESTIMONIOS -->
+  <section id="contacto" class="contact-section">
+    <div class="two-columns">
+      <div>
+        <span class="section-tag">Comentarios</span>
+        <h3 style="color:var(--brown-dark); margin-bottom:1rem;">Tu Experiencia</h3>
+        <form id="feedback-form">
+          <input type="text" id="fb-name" placeholder="Nombre completo" required>
+          <textarea id="fb-text" placeholder="¿Cómo te ayudó ANUTRILUD?" required></textarea>
+          <button type="submit" class="btn">Publicar Opinión</button>
+        </form>
+        <div id="comments-list" style="margin-top:1rem; display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+
+      <div>
+        <span class="section-tag">Pedidos</span>
+        <h3 style="color:var(--brown-dark); margin-bottom:1rem;">Contacto Directo</h3>
+        <form id="contact-form">
+          <input type="text" placeholder="Tu Nombre" required>
+          <input type="email" placeholder="Correo Electrónico" required>
+          <textarea placeholder="Mensaje o pedido" required></textarea>
+          <button type="submit" class="btn">Enviar Solicitud</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast-msg">Guardado correctamente</div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> ANUTRILUD - Alimento nutritivo para la salud.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* MANEJO DE MODO OSCURO / CLARO */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeText = document.getElementById('theme-text');
+    const themeIcon = themeToggleBtn.querySelector('i');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'dark') {
+        themeIcon.className = 'fa-solid fa-sun';
+        themeText.textContent = 'Claro';
+      } else {
+        themeIcon.className = 'fa-solid fa-moon';
+        themeText.textContent = 'Oscuro';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    function showToast(msg) {
+      const t = document.getElementById('toast-msg');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 3000);
+    }
+
+    // Navegación Dinámica por Pestañas (Tabs)
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.product-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    /* VISTA AMPLÍADA SUAVE (LIGHTBOX) PARA ANEXOS */
+    function openLightbox(src, title) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+
+      img.src = src;
+      caption.textContent = title;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox(event) {
+      if (event.target.classList.contains('lightbox') || event.target.closest('.lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+    }
+
+    // Cerrar Lightbox con tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+    });
+
+    // Live Feed
+    const feedBox = document.getElementById('live-feed-box');
+    const events = ['Fácil disolución', 'Sabor suave anti-náuseas', 'Soporte de Hierro y Zinc'];
+    function addFeed() {
+      const item = events[Math.floor(Math.random() * events.length)];
+      const div = document.createElement('div');
+      div.className = 'feed-item';
+      div.innerHTML = `<i class="fa-solid fa-check" style="color:var(--primary)"></i> ${item}`;
+      feedBox.prepend(div);
+      if (feedBox.children.length > 2) feedBox.removeChild(feedBox.lastChild);
+    }
+    setInterval(addFeed, 3000);
+    addFeed();
+
+    // Calculadora
+    document.getElementById('calc-slider').addEventListener('input', (e) => {
+      document.getElementById('hours-val').textContent = e.target.value;
+      document.getElementById('calc-result').textContent = e.target.value * 200;
+    });
+
+    // Métrica Té
+    document.getElementById('simulate-metrics-btn').addEventListener('click', () => {
+      const val = Math.floor(Math.random() * 8) + 90;
+      document.getElementById('metric-display').textContent = `Nivel de Alivio: ${val}%`;
+      showToast('Monitoreo actualizado');
+    });
+
+    // Formularios
+    document.getElementById('feedback-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = document.getElementById('fb-name').value;
+      const t = document.getElementById('fb-text').value;
+      const box = document.getElementById('comments-list');
+      const card = document.createElement('div');
+      card.style.cssText = 'background:var(--bg-card); padding:8px 12px; border-radius:6px; border:1px solid var(--border); font-size:0.85rem;';
+      card.innerHTML = `<strong style="color:var(--brown-dark);">${n}</strong><p style="color:var(--text-muted);">${t}</p>`;
+      box.prepend(card);
+      showToast('¡Gracias por tu opinión!');
+      e.target.reset();
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('¡Solicitud enviada!');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
