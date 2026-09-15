@@ -189,22 +189,23 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ESTILOS DEL CONTENEDOR DEL VIDEO */
     .video-wrapper {
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
+      width: 100%;
       border-radius: 16px;
       border: 1px solid var(--border);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       background: #000;
+      overflow: hidden;
     }
 
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 16px;
+      object-fit: cover;
     }
 
     /* Layout Dinámico: Cuadrícula Bento */
@@ -369,7 +370,7 @@
       object-fit: cover;
     }
 
-    /* ESTILOS DE LA SECCIÓN ANEXOS / GALERÍA DINÁMICA SUAVE */
+    /* GALERÍA / ANEXOS */
     .annex-container {
       margin-top: 3.5rem;
       padding-top: 2.5rem;
@@ -391,13 +392,11 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
       cursor: pointer;
       position: relative;
-      /* Animación suave de entrada */
       animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       opacity: 0;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
-    /* Delays sutiles en cascada */
     .gallery-card:nth-child(1) { animation-delay: 0.1s; }
     .gallery-card:nth-child(2) { animation-delay: 0.2s; }
     .gallery-card:nth-child(3) { animation-delay: 0.3s; }
@@ -426,7 +425,6 @@
       transform: scale(1.06);
     }
 
-    /* Superposición de ícono al pasar el mouse */
     .gallery-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -448,13 +446,8 @@
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-card:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-card:hover .gallery-overlay i {
-      transform: scale(1);
-    }
+    .gallery-card:hover .gallery-overlay { opacity: 1; }
+    .gallery-card:hover .gallery-overlay i { transform: scale(1); }
 
     .gallery-info {
       padding: 1.1rem 1.2rem;
@@ -479,7 +472,7 @@
       margin: 0;
     }
 
-    /* VISOR LIGHTBOX ANIMADO Y DIGERIBLE */
+    /* VISOR LIGHTBOX */
     .lightbox {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -510,9 +503,7 @@
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .lightbox.active .lightbox-content {
-      transform: scale(1);
-    }
+    .lightbox.active .lightbox-content { transform: scale(1); }
 
     .lightbox-img {
       max-width: 100%;
@@ -582,7 +573,7 @@
       border-left: 3px solid var(--accent);
     }
 
-    /* Dos columnas para Contacto y Testimonios */
+    /* Contacto y Testimonios */
     .contact-section {
       background: var(--brown-light);
       border-top: 1px solid var(--border);
@@ -717,7 +708,7 @@
     </nav>
   </header>
 
-  <!-- HERO DINÁMICO HORIZONTAL -->
+  <!-- HERO SECTION CON VIDEO AÑADIDO -->
   <section class="hero">
     <div class="hero-left">
       <svg class="hero-logo-badge"><use href="#anutrilud-logo"/></svg>
@@ -726,13 +717,17 @@
       <h1>Línea Especializada de Recuperación contra el Dengue en Piura</h1>
     </div>
     <div class="hero-right">
+      <!-- REPRODUCTOR DE VIDEO AÑADIDO AQUI -->
       <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video ANUTRILUD" allowfullscreen></iframe>
+        <video controls preload="metadata">
+          <source src="video.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video HTML5.
+        </video>
       </div>
     </div>
   </section>
 
-  <!-- MOSAICO BENTO AMPLIADO -->
+  <!-- MOSAICO BENTO -->
   <section id="puntos-clave" style="padding: 2rem 0 4rem;">
     <div class="section-title-center">
       <span class="section-tag">Fundamentos e Impacto</span>
@@ -740,7 +735,6 @@
     </div>
 
     <div class="bento-grid">
-      <!-- PROBLEMÁTICA -->
       <div class="bento-card">
         <i class="fa-solid fa-triangle-exclamation"></i>
         <h3>Problemática Sanitaria</h3>
@@ -752,7 +746,6 @@
         </ul>
       </div>
 
-      <!-- SOLUCIÓN -->
       <div class="bento-card featured">
         <i class="fa-solid fa-shield-halved"></i>
         <h3>Solución ANUTRILUD</h3>
@@ -764,7 +757,6 @@
         </ul>
       </div>
 
-      <!-- VISIÓN -->
       <div class="bento-card">
         <i class="fa-solid fa-compass"></i>
         <h3>Visión Estratégica</h3>
@@ -778,7 +770,7 @@
     </div>
   </section>
 
-  <!-- PRODUCTOS DINÁMICOS EN PESTAÑAS -->
+  <!-- PRODUCTOS -->
   <section id="productos" class="products-container">
     <div class="section-title-center">
       <span class="section-tag">Gama Nutritiva</span>
@@ -867,7 +859,7 @@
       </div>
     </div>
 
-    <!-- SUBSECCIÓN ANEXOS: GALERÍA DINÁMICA INTERACTIVA SIN DESCRIPCIONES -->
+    <!-- ANEXOS GALERÍA -->
     <div class="annex-container">
       <div class="section-title-center">
         <span class="section-tag">Anexos Fotográficos</span>
@@ -917,7 +909,7 @@
     </div>
   </section>
 
-  <!-- VISOR AMBLIADO (LIGHTBOX) PARA IMÁGENES -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-content">
       <button class="lightbox-close" onclick="closeLightbox(event)"><i class="fa-solid fa-xmark"></i></button>
@@ -926,7 +918,7 @@
     </div>
   </div>
 
-  <!-- SECCIÓN CONTACTO Y TESTIMONIOS -->
+  <!-- CONTACTO -->
   <section id="contacto" class="contact-section">
     <div class="two-columns">
       <div>
@@ -994,7 +986,7 @@
       setTimeout(() => t.style.display = 'none', 3000);
     }
 
-    // Navegación Dinámica por Pestañas (Tabs)
+    // Navegación por pestañas
     function switchTab(tabId, btn) {
       document.querySelectorAll('.product-content').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1002,7 +994,7 @@
       btn.classList.add('active');
     }
 
-    /* VISTA AMPLÍADA SUAVE (LIGHTBOX) PARA ANEXOS */
+    /* LIGHTBOX */
     function openLightbox(src, title) {
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
@@ -1019,14 +1011,13 @@
       }
     }
 
-    // Cerrar Lightbox con tecla ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.getElementById('lightbox').classList.remove('active');
       }
     });
 
-    // Live Feed
+    // Feed Interactivo
     const feedBox = document.getElementById('live-feed-box');
     const events = ['Fácil disolución', 'Sabor suave anti-náuseas', 'Soporte de Hierro y Zinc'];
     function addFeed() {
